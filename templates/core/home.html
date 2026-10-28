@@ -23,20 +23,20 @@
 
   <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 lg:py-36">
     <div class="max-w-4xl">
-      <div class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-sm text-black/60 shadow-sm mb-8">
+      <div class="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/70 px-4 py-2 text-sm text-black/75 shadow-sm mb-8">
         <span class="h-2 w-2 rounded-full bg-accent"></span>
         {{ content.hero_badge }}
       </div>
 
-      <h1 class="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.08] tracking-tight text-ink">
+      <h1 data-reveal data-reveal-delay="100" class="font-display text-4xl md:text-6xl lg:text-7xl font-semibold leading-[1.08] tracking-tight text-ink">
         {{ hero_before }}<span class="text-accent">{{ content.hero_highlight }}</span>{{ hero_after }}
       </h1>
 
-      <p class="mt-8 max-w-2xl text-base md:text-xl leading-relaxed text-black/60">
+      <p data-reveal data-reveal-delay="200" class="mt-8 max-w-2xl text-base md:text-xl leading-relaxed text-black/75">
         {{ content.hero_subtitle }}
       </p>
 
-      <div class="mt-10 flex flex-wrap gap-4">
+      <div data-reveal data-reveal-delay="300" class="mt-10 flex flex-wrap gap-4">
         <a href="#projets" class="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-white transition hover:bg-accent">
           Découvrir mes projets <span aria-hidden="true">↗</span>
         </a>
@@ -50,7 +50,7 @@
         {% endif %}
       </div>
 
-      <div class="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-black/10 pt-6 text-sm text-black/50">
+      <div data-reveal data-reveal-delay="400" class="mt-14 flex flex-wrap gap-x-8 gap-y-3 border-t border-black/10 pt-6 text-sm text-black/50">
         {% for tag in tech_tags %}<span>{{ tag }}</span>{% endfor %}
       </div>
     </div>
@@ -61,8 +61,8 @@
   <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between mb-12">
     <div>
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-3">Portfolio</p>
-      <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Des projets concrets.</h2>
-      <p class="mt-4 max-w-xl text-black/60 leading-relaxed">Des applications développées pour répondre à des besoins précis, de la conception technique à leur déploiement.</p>
+      <h2 data-reveal class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Des projets concrets.</h2>
+      <p class="mt-4 max-w-xl text-black/75 leading-relaxed">Des applications développées pour répondre à des besoins précis, de la conception technique à leur déploiement.</p>
     </div>
     <p class="text-sm text-black/50">{{ projects|length }} projet{{ projects|length|pluralize }}</p>
   </div>
@@ -70,7 +70,7 @@
   {% if projects %}
     <div class="grid gap-7 md:grid-cols-2">
       {% for project in projects %}
-        <article class="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white/75 transition duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl hover:shadow-black/[0.04]">
+        <article data-reveal data-reveal-delay="0" class="group flex h-full flex-col overflow-hidden rounded-3xl border border-black/10 bg-white/75 transition duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-xl hover:shadow-black/[0.04]">
           <a href="{% url 'core:project_detail' project.slug %}" class="block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent" aria-label="Découvrir le projet {{ project.title }}">
             <div class="relative aspect-[16/9] overflow-hidden bg-black/[0.03]">
               {% if project.cover_image %}
@@ -89,11 +89,11 @@
                 <h3 class="font-display text-xl md:text-2xl font-semibold tracking-tight text-ink transition group-hover:text-accent">{{ project.title }}</h3>
                 <span class="shrink-0 text-xl text-black/30 transition group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent" aria-hidden="true">↗</span>
               </div>
-              <p class="mt-4 flex-1 text-sm leading-7 text-black/60">{{ project.summary }}</p>
+              <p class="mt-4 flex-1 text-sm leading-7 text-black/75">{{ project.summary }}</p>
               {% if project.stack %}
                 <div class="mt-6 border-t border-black/5 pt-5">
                   <p class="text-xs font-medium uppercase tracking-wider text-black/40 mb-2">Technologies</p>
-                  <p class="text-sm text-black/60">{{ project.stack }}</p>
+                  <p class="text-sm text-black/75">{{ project.stack }}</p>
                 </div>
               {% endif %}
             </div>
@@ -114,9 +114,9 @@
     <div class="grid gap-10 md:grid-cols-3 md:gap-16">
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-3">À propos</p>
-        <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Construire.<br>Comprendre.<br>Déployer.</h2>
+        <h2 data-reveal class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Construire.<br>Comprendre.<br>Déployer.</h2>
       </div>
-      <div class="md:col-span-2 space-y-5 text-base leading-8 text-black/65">
+      <div class="md:col-span-2 space-y-5 text-base leading-8 text-black/75">
         <p>{{ content.about_p1 }}</p>
         <p>{{ content.about_p2 }}</p>
         <p>{{ content.about_p3 }}</p>
@@ -131,11 +131,11 @@
 <section id="competences" class="scroll-mt-20 max-w-6xl mx-auto px-6 py-20 md:py-28">
   <div class="max-w-2xl mb-12">
     <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-3">Compétences</p>
-    <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Mon environnement technique.</h2>
-    <p class="mt-4 leading-relaxed text-black/60">Les technologies et outils que j'utilise pour développer, intégrer et déployer des applications web.</p>
+    <h2 data-reveal class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Mon environnement technique.</h2>
+    <p class="mt-4 leading-relaxed text-black/75">Les technologies et outils que j'utilise pour développer, intégrer et déployer des applications web.</p>
   </div>
   <div class="grid gap-5 md:grid-cols-3">
-    <article class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
+    <article data-reveal data-reveal-delay="0" class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
       <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-xl text-accent" aria-hidden="true">&lt;/&gt;</div>
       <h3 class="font-display text-xl font-semibold text-ink">Backend</h3>
       <p class="mt-2 text-sm leading-6 text-black/50">Logique métier, traitement des données et services applicatifs.</p>
@@ -145,7 +145,7 @@
         {% endfor %}
       </ul>
     </article>
-    <article class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
+    <article data-reveal data-reveal-delay="120" class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
       <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-xl text-accent" aria-hidden="true">◫</div>
       <h3 class="font-display text-xl font-semibold text-ink">Frontend</h3>
       <p class="mt-2 text-sm leading-6 text-black/50">Interfaces web accessibles, structurées et adaptées aux écrans.</p>
@@ -155,7 +155,7 @@
         {% endfor %}
       </ul>
     </article>
-    <article class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
+    <article data-reveal data-reveal-delay="240" class="rounded-3xl border border-black/10 bg-white/70 p-7 transition hover:border-accent/30">
       <div class="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/10 text-xl text-accent" aria-hidden="true">↗</div>
       <h3 class="font-display text-xl font-semibold text-ink">Déploiement & outils</h3>
       <p class="mt-2 text-sm leading-6 text-black/50">Gestion du code, environnements de travail et mise en ligne.</p>
@@ -173,15 +173,15 @@
     <div class="grid gap-10 md:grid-cols-3 md:gap-16">
       <div>
         <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-3">Services</p>
-        <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Des solutions adaptées à vos besoins.</h2>
-        <p class="mt-5 text-sm leading-7 text-black/60">Un accompagnement technique pour concrétiser vos idées et faire évoluer vos projets web.</p>
+        <h2 data-reveal class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Des solutions adaptées à vos besoins.</h2>
+        <p class="mt-5 text-sm leading-7 text-black/75">Un accompagnement technique pour concrétiser vos idées et faire évoluer vos projets web.</p>
       </div>
       <div class="md:col-span-2 grid gap-4 sm:grid-cols-2">
         {% for service in services %}
-        <article class="rounded-2xl border border-black/10 bg-white/70 p-6 transition hover:border-accent/30 hover:shadow-lg hover:shadow-black/[0.03]">
+        <article data-reveal data-reveal-delay="0" class="rounded-2xl border border-black/10 bg-white/70 p-6 transition hover:border-accent/30 hover:shadow-lg hover:shadow-black/[0.03]">
           <div class="mb-5 text-2xl text-accent" aria-hidden="true">{{ service.icon }}</div>
           <h3 class="font-display text-lg font-semibold text-ink">{{ service.title }}</h3>
-          <p class="mt-3 text-sm leading-7 text-black/60">{{ service.description }}</p>
+          <p class="mt-3 text-sm leading-7 text-black/75">{{ service.description }}</p>
         </article>
         {% endfor %}
       </div>
@@ -193,11 +193,11 @@
   <div class="grid gap-12 md:grid-cols-5 md:gap-16">
     <div class="md:col-span-2">
       <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-3">Contact</p>
-      <h2 class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Parlons de votre projet.</h2>
-      <p class="mt-5 text-base leading-7 text-black/60">{{ content.contact_intro }}</p>
+      <h2 data-reveal class="font-display text-3xl md:text-5xl font-semibold tracking-tight text-ink">Parlons de votre projet.</h2>
+      <p class="mt-5 text-base leading-7 text-black/75">{{ content.contact_intro }}</p>
       <div class="mt-8 rounded-2xl border border-black/10 bg-[#fafaf9]/55 p-5">
         <p class="text-sm font-medium text-ink">Vous pouvez me contacter pour :</p>
-        <ul class="mt-4 space-y-3 text-sm text-black/60">
+        <ul class="mt-4 space-y-3 text-sm text-black/75">
           <li class="flex items-start gap-3"><span class="text-accent" aria-hidden="true">✓</span> Un projet de développement web</li>
           <li class="flex items-start gap-3"><span class="text-accent" aria-hidden="true">✓</span> Une mission technique</li>
           <li class="flex items-start gap-3"><span class="text-accent" aria-hidden="true">✓</span> Une opportunité professionnelle</li>

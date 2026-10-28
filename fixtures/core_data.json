@@ -1,0 +1,235 @@
+[
+{
+  "model": "core.sitecontent",
+  "pk": 1,
+  "fields": {
+    "hero_badge": "Développeur full-stack junior",
+    "hero_title": "Je transforme les idées en applications web concrètes.",
+    "hero_highlight": "applications web",
+    "hero_subtitle": "Du développement backend à la mise en production, je conçois des solutions numériques fonctionnelles, pensées pour répondre aux besoins réels des entreprises et de leurs utilisateurs.",
+    "hero_tech_tags": "Python & Django,API REST,Bases de données,Déploiement web",
+    "about_p1": "Je suis développeur informatique, orienté vers le développement web, les applications métier et les solutions numériques. Je travaille principalement avec Python et Django pour concevoir des backends, structurer les données et développer les fonctionnalités essentielles au bon fonctionnement d'une application.",
+    "about_p2": "Mon approche ne s'arrête pas au code. Je m'intéresse également à l'intégration des interfaces, à la connexion des API, à la préparation des environnements techniques et au déploiement des applications en production.",
+    "about_p3": "À travers mes projets, je cherche à renforcer mes compétences, à résoudre des problèmes concrets et à construire des solutions fiables, maintenables et adaptées aux besoins de leurs utilisateurs.",
+    "contact_intro": "Une idée à concrétiser, un besoin technique ou une opportunité professionnelle ? Décrivez-moi votre projet et voyons comment avancer ensemble.",
+    "contact_email": "sidibeaboubacarsidick6@gmail.com",
+    "github_url": "https://github.com/sidibeaboubacarsidick6-hub",
+    "linkedin_url": "#",
+    "cv_file": "",
+    "footer_tagline": "Abidjan, Côte d'Ivoire"
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 1,
+  "fields": {
+    "name": "Python",
+    "category": "backend",
+    "order": 1
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 2,
+  "fields": {
+    "name": "Django",
+    "category": "backend",
+    "order": 2
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 3,
+  "fields": {
+    "name": "API REST",
+    "category": "backend",
+    "order": 3
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 4,
+  "fields": {
+    "name": "PostgreSQL (bases)",
+    "category": "backend",
+    "order": 4
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 5,
+  "fields": {
+    "name": "HTML5 / CSS3",
+    "category": "frontend",
+    "order": 1
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 6,
+  "fields": {
+    "name": "Bootstrap",
+    "category": "frontend",
+    "order": 2
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 7,
+  "fields": {
+    "name": "Templates Django",
+    "category": "frontend",
+    "order": 3
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 8,
+  "fields": {
+    "name": "JavaScript (bases)",
+    "category": "frontend",
+    "order": 4
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 9,
+  "fields": {
+    "name": "Responsive design",
+    "category": "frontend",
+    "order": 5
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 10,
+  "fields": {
+    "name": "Git / GitHub",
+    "category": "deploy",
+    "order": 1
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 11,
+  "fields": {
+    "name": "Render",
+    "category": "deploy",
+    "order": 2
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 12,
+  "fields": {
+    "name": "Docker",
+    "category": "deploy",
+    "order": 3
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 13,
+  "fields": {
+    "name": "VPS Linux",
+    "category": "deploy",
+    "order": 4
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 14,
+  "fields": {
+    "name": "Linux (bases)",
+    "category": "deploy",
+    "order": 5
+  }
+},
+{
+  "model": "core.skill",
+  "pk": 15,
+  "fields": {
+    "name": "WSL / VS Code",
+    "category": "deploy",
+    "order": 6
+  }
+},
+{
+  "model": "core.service",
+  "pk": 1,
+  "fields": {
+    "title": "Développement web",
+    "description": "Création de sites web professionnels et d'applications métier adaptés aux besoins des entreprises et de leurs utilisateurs.",
+    "icon": "</>",
+    "order": 1
+  }
+},
+{
+  "model": "core.service",
+  "pk": 2,
+  "fields": {
+    "title": "Backend & API",
+    "description": "Développement des fonctionnalités métier, gestion des utilisateurs, création d'API REST et intégration de services externes.",
+    "icon": "{ }",
+    "order": 2
+  }
+},
+{
+  "model": "core.service",
+  "pk": 3,
+  "fields": {
+    "title": "Déploiement web",
+    "description": "Préparation des applications, configuration des environnements et accompagnement à la mise en ligne sur des plateformes d'hébergement ou des serveurs VPS.",
+    "icon": "↗",
+    "order": 3
+  }
+},
+{
+  "model": "core.service",
+  "pk": 4,
+  "fields": {
+    "title": "Bases de données",
+    "description": "Organisation des données, intégration avec le backend, gestion des contenus et mise en place des opérations courantes d'administration.",
+    "icon": "▤",
+    "order": 4
+  }
+},
+{
+  "model": "core.project",
+  "pk": 1,
+  "fields": {
+    "title": "IvoirPass",
+    "slug": "ivoirpass",
+    "summary": "Plateforme de billetterie digitale et de distribution culturelle pour le marché ivoirien.",
+    "description": "IvoirPass est une plateforme de billetterie digitale et de distribution culturelle. Développée seule à partir d'un cahier des charges, de la conception à la mise en production sur VPS. La plateforme permet l'achat de billets en ligne, l'encaissement des paiements et le décaissement instantané des reversements aux organisateurs d'événements.",
+    "stack": "Django, Python, Bootstrap, PostgreSQL, VPS",
+    "role": "Développeur unique — conception, développement et mise en production",
+    "demo_url": "https://ivoirpass.com/",
+    "github_url": "",
+    "cover_image": "media/projects/IvoirPass___Vos_événements_en_un_clic__p7c9b4",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2026-10-28T10:24:10.383Z",
+    "updated_at": "2026-10-28T14:48:36.755Z"
+  }
+},
+{
+  "model": "core.project",
+  "pk": 2,
+  "fields": {
+    "title": "QR Menu",
+    "slug": "qr-menu",
+    "summary": "Digitalisation des menus de restaurants via QR code, avec URL personnelle par établissement.",
+    "description": "Service SaaS de digitalisation des menus de restaurants. Chaque établissement dispose d'une URL personnelle et d'un QR code unique, remplaçant les menus papier. Période d'essai gratuite de 15 jours à l'inscription, renouvelable manuellement (pas de paiement intégré au MVP). Conçu et développé de bout en bout, déployé sur Render.",
+    "stack": "Django, Python, Bootstrap, Render, cron job",
+    "role": "Développeur unique — conception, développement et déploiement",
+    "demo_url": "https://qr-menu-fa07.onrender.com/",
+    "github_url": "",
+    "cover_image": "media/projects/Icône_QR_violette_minimaliste_vahq6x",
+    "is_featured": true,
+    "order": 0,
+    "created_at": "2026-10-28T10:25:49.511Z",
+    "updated_at": "2026-10-28T14:48:14.280Z"
+  }
+}
+]

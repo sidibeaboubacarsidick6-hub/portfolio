@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Sidibe Aboubacar Sidick — Développeur Full-Stack{% endblock %}</title>
+  <meta name="description" content="{% block description %}Portfolio de Sidibe Aboubacar Sidick, développeur full-stack junior basé en Côte d'Ivoire.{% endblock %}">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
+  <link rel="canonical" href="{% block canonical_url %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sidibe Aboubacar Sidick">
+  <meta property="og:title" content="{% block og_title %}Sidibe Aboubacar Sidick — Développeur Full-Stack{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Portfolio de Sidibe Aboubacar Sidick, développeur full-stack junior basé en Côte d'Ivoire.{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/output.css' %}?v={{ STATIC_VERSION }}">
+</head>
+<body class="min-h-screen flex flex-col bg-bg text-ink font-body antialiased">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:rounded-lg focus:bg-ink focus:px-4 focus:py-2 focus:text-white">Aller au contenu</a>
+
+  <header class="sticky top-0 z-50 border-b border-black/5 bg-bg/80 backdrop-blur-md">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="font-display font-semibold text-lg tracking-tight">Sidick<span class="text-accent">.</span></a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm">
+        <li><a href="#projets" class="text-black/60 hover:text-ink transition">Projets</a></li>
+        <li><a href="#apropos" class="text-black/60 hover:text-ink transition">À propos</a></li>
+        <li><a href="#competences" class="text-black/60 hover:text-ink transition">Compétences</a></li>
+        <li><a href="#services" class="text-black/60 hover:text-ink transition">Services</a></li>
+        <li><a href="#contact" class="text-black/60 hover:text-ink transition">Contact</a></li>
+      </ul>
+
+      <a href="#contact" class="hidden md:inline-flex items-center rounded-full bg-ink text-white text-sm px-4 py-2 hover:bg-accent transition">Me contacter</a>
+
+      <button id="menu-toggle" type="button"
+              class="md:hidden inline-flex items-center justify-center h-10 w-10 rounded-lg border border-black/10 hover:border-accent hover:text-accent transition"
+              aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg id="menu-icon-open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg id="menu-icon-close" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6"/></svg>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="md:hidden hidden absolute top-full left-0 right-0 border-t border-black/5 bg-bg shadow-xl">
+      <ul class="max-w-6xl mx-auto px-6 py-4 space-y-1 text-sm">
+        <li><a href="#projets" class="block py-2 text-black/70 hover:text-accent transition">Projets</a></li>
+        <li><a href="#apropos" class="block py-2 text-black/70 hover:text-accent transition">À propos</a></li>
+        <li><a href="#competences" class="block py-2 text-black/70 hover:text-accent transition">Compétences</a></li>
+        <li><a href="#services" class="block py-2 text-black/70 hover:text-accent transition">Services</a></li>
+        <li><a href="#contact" class="block py-2 text-black/70 hover:text-accent transition">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main" class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="border-t border-black/5 mt-24">
+    <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-black/60">
+      <p>© {% now "Y" %} Sidibe Aboubacar Sidick — Abidjan, Côte d'Ivoire</p>
+      <ul class="flex gap-6">
+        <li><a href="https://github.com/sidibeaboubacarsidick6-hub" target="_blank" rel="noopener" class="hover:text-accent transition">GitHub</a></li>
+        <li><a href="#contact" class="hover:text-accent transition">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  {% block structured_data %}{% endblock %}
+  <script src="{% static 'js/main.js' %}" defer></script>
+</body>
+</html>

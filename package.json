@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-dev",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
+    "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch",
+    "build:full": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify && cd . && ../.venv/bin/python manage.py collectstatic --noinput"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^3.4.17"
+  }
+}

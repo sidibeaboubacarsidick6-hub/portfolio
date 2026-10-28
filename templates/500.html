@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erreur serveur — Sidibe Aboubacar Sidick</title>
+  <link rel="stylesheet" href="{% static 'css/output.css' %}?v={{ STATIC_VERSION }}">
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center bg-bg text-ink font-body antialiased px-6 text-center">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-4">Erreur 500</p>
+  <h1 class="font-display text-4xl md:text-6xl font-semibold tracking-tight">Une erreur est survenue.</h1>
+  <p class="mt-6 text-base text-black/60 max-w-xl">Le serveur a rencontré un problème inattendu. Merci de réessayer dans quelques instants.</p>
+  <a href="/" class="mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-white transition hover:bg-accent">
+    Retour à l'accueil <span aria-hidden="true">→</span>
+  </a>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Page introuvable — Sidibe Aboubacar Sidick{% endblock %}
+{% block description %}La page demandée n'existe pas ou a été déplacée.{% endblock %}
+
+{% block content %}
+<section class="max-w-3xl mx-auto px-6 py-24 md:py-32 text-center">
+  <p class="text-sm font-semibold uppercase tracking-[0.18em] text-accent mb-4">Erreur 404</p>
+  <h1 class="font-display text-5xl md:text-7xl font-semibold tracking-tight text-ink">
+    Page introuvable.
+  </h1>
+  <p class="mt-6 text-base md:text-lg text-black/60 leading-relaxed max-w-xl mx-auto">
+    La page que vous cherchez n'existe pas, a été déplacée ou n'est plus disponible.
+  </p>
+  <div class="mt-10 flex flex-wrap justify-center gap-3">
+    <a href="/" class="inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-medium text-white transition hover:bg-accent">
+      Retour à l'accueil <span aria-hidden="true">→</span>
+    </a>
+    <a href="/#contact" class="inline-flex items-center rounded-full border border-black/10 bg-white px-7 py-3.5 text-sm font-medium text-ink transition hover:border-accent hover:text-accent">
+      Me contacter
+    </a>
+  </div>
+</section>
+{% endblock %}

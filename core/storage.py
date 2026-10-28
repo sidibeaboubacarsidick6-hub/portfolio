@@ -37,14 +37,27 @@ class MediaCloudinaryStorage(Storage):
     def url(self, name):
         if not name:
             return ""
-        # Genere une URL optimisee (f_auto, q_auto) via le CDN Cloudinary
-        url, _ = cloudinary.utils.cloudinary_url(
-            name,
-            resource_type="auto",
-            fetch_format="auto",
-            quality="auto",
-            secure=True,
-        )
+        # Cloudinary n'accepte PAS "auto" en URL de livraison (uniquement en upload).
+        # On choisit "image" pour les images ET les PDF (Cloudinary traite les PDF
+        # comme des images pour permettre les transformations).
+        # On garde "raw" en secours pour les autres documents (docx, zip, etc.).
+        ext = os.path.splitext(name)[1].lower()
+        if ext in (".doc", ".docx", ".zip", ".txt", ".csv"):
+            resource_type = "raw"
+            url, _ = cloudinary.utils.cloudinary_url(
+                name,
+                resource_type=resource_type,
+                secure=True,
+            )
+        else:
+            resource_type = "image"
+            url, _ = cloudinary.utils.cloudinary_url(
+                name,
+                resource_type=resource_type,
+                fetch_format="auto",
+                quality="auto",
+                secure=True,
+            )
         return url
 
     def exists(self, name):

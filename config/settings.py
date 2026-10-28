@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'cloudinary',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
     'core',
 ]
@@ -166,7 +165,7 @@ CLOUDINARY_STORAGE = {
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STORAGES = {
-    'default': {'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage'},
+    'default': {'BACKEND': 'core.storage.MediaCloudinaryStorage'},
     'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
 }
 

@@ -6,7 +6,7 @@ echo "==> Installation des dependances Python"
 pip install -r requirements.txt
 
 echo "==> Installation des dependances Node (Tailwind)"
-npm ci || npm install
+npm ci
 
 echo "==> Build du CSS Tailwind (mode production, minifie)"
 npm run build

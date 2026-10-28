@@ -40,7 +40,7 @@ class SiteContentAdmin(admin.ModelAdmin):
             "fields": ("github_url", "linkedin_url", "cv_file"),
         }),
         ("Footer", {
-            "fields": ("footer_tagline",),
+            "fields": ("footer_tagline", "site_background"),
         }),
     )
 

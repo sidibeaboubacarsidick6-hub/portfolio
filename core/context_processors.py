@@ -11,3 +11,9 @@ def static_version(request):
         return {"STATIC_VERSION": str(int(mtime))}
     except OSError:
         return {"STATIC_VERSION": "0"}
+
+
+from .models import SiteContent
+
+def site_content(request):
+    return {'content': SiteContent.load()}

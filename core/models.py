@@ -96,6 +96,9 @@ class SiteContent(models.Model):
     # Footer
     footer_tagline = models.CharField(max_length=160, default="Abidjan, Côte d'Ivoire")
 
+    # Fond du site
+    site_background = models.ImageField(upload_to="site/", blank=True, null=True, help_text="Image de fond globale (visible sur toutes les pages, sauf header et footer)")
+
     class Meta:
         verbose_name = "Contenu du site"
         verbose_name_plural = "Contenu du site"

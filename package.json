@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify",
     "watch": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --watch",
-    "build:full": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify && cd . && ../.venv/bin/python manage.py collectstatic --noinput"
+    "build:full": "tailwindcss -i ./static/src/input.css -o ./static/css/output.css --minify && python manage.py collectstatic --noinput"
   },
   "keywords": [],
   "author": "",

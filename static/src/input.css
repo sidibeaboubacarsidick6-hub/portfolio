@@ -7,6 +7,26 @@
   body { @apply bg-bg text-ink font-body antialiased; }
   h1, h2, h3, h4 { @apply font-display tracking-tight; }
   ::selection { @apply bg-accent text-white; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-accent; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+}
+
+@layer components {
+  .container-page { @apply mx-auto max-w-6xl px-6; }
+  .section { @apply scroll-mt-20 py-20 md:py-28; }
+  .eyebrow { @apply mb-3 text-sm font-semibold uppercase tracking-[0.18em] text-accent; }
+  .heading-section { @apply font-display text-3xl font-semibold tracking-tight text-ink md:text-5xl; }
+  .lead { @apply text-base leading-relaxed text-ink-soft md:text-lg; }
+
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium transition; }
+  .btn-primary { @apply bg-ink text-white hover:bg-accent; }
+  .btn-secondary { @apply border border-line bg-surface text-ink hover:border-accent hover:text-accent; }
+
+  .card { @apply rounded-3xl border border-line bg-surface/80 shadow-card; }
+  .badge { @apply inline-flex items-center rounded-full bg-accent-soft px-3 py-1 text-xs font-medium text-accent-hover; }
+  .field { @apply w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm text-ink placeholder-ink-muted transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20; }
 }
 
 @media (min-width: 768px) {

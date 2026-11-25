@@ -89,3 +89,24 @@ class AdminDashboardTests(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertContains(r, "Messages non lus")
         self.assertEqual(r.context["dashboard"]["unread"], 1)
+
+
+@override_settings(STORAGES=TEST_STORAGES)
+class PublicationTests(TestCase):
+    def setUp(self):
+        self.brouillon = Project.objects.create(
+            title="Brouillon secret", summary="r", description="d",
+            stack="Django", role="Dev", is_featured=False,
+        )
+        self.url = reverse("core:project_detail", args=[self.brouillon.slug])
+
+    def test_brouillon_invisible_aux_visiteurs(self):
+        self.assertEqual(self.client.get(self.url).status_code, 404)
+        self.assertNotContains(self.client.get(reverse("core:home")), "Brouillon secret")
+
+    def test_brouillon_visible_pour_le_staff(self):
+        staff = get_user_model().objects.create_user(
+            "staff", "s@example.com", "mdp-de-test-12345", is_staff=True,
+        )
+        self.client.force_login(staff)
+        self.assertEqual(self.client.get(self.url).status_code, 200)

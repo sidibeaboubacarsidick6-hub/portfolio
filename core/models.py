@@ -12,7 +12,10 @@ class Project(models.Model):
     demo_url = models.URLField(blank=True, help_text="Lien vers la demo en ligne")
     github_url = models.URLField(blank=True, help_text="Lien vers le depot (laisser vide si prive)")
     cover_image = models.ImageField(upload_to="projects/", blank=True, null=True)
-    is_featured = models.BooleanField(default=True)
+    is_featured = models.BooleanField(
+        "Publié", default=True,
+        help_text="Décoché : le projet est masqué du site (accueil et page détail). Seul toi le vois, connecté à l'admin.",
+    )
     order = models.PositiveIntegerField(default=0, help_text="Ordre d'affichage (croissant)")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

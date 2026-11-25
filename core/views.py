@@ -65,5 +65,6 @@ def home(request):
 
 
 def project_detail(request, slug):
-    project = get_object_or_404(Project, slug=slug)
+    queryset = Project.objects.all() if request.user.is_staff else Project.objects.filter(is_featured=True)
+    project = get_object_or_404(queryset, slug=slug)
     return render(request, "core/project_detail.html", {"project": project})

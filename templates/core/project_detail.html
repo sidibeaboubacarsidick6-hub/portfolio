@@ -5,6 +5,8 @@
 {% block description %}{{ project.summary }}{% endblock %}
 {% block og_title %}{{ project.title }} — Réalisation · Sidibe Aboubacar Sidick{% endblock %}
 {% block og_description %}{{ project.summary }}{% endblock %}
+{% block og_image %}{% if project.cover_image %}<meta property="og:image" content="{{ project.cover_image.url }}">{% endif %}{% endblock %}
+{% block twitter_card %}{% if project.cover_image %}summary_large_image{% else %}summary{% endif %}{% endblock %}
 
 {% block content %}
 <article class="max-w-3xl mx-auto px-6 pt-16 pb-16">

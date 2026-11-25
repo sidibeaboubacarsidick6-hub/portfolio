@@ -3,24 +3,23 @@ from .models import ContactMessage
 
 
 class ContactForm(forms.ModelForm):
+    # Champ piège anti-spam : invisible pour les humains, rempli par les robots.
+    website = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={"tabindex": "-1", "autocomplete": "off"}),
+    )
+
     class Meta:
         model = ContactMessage
         fields = ["name", "email", "message"]
         widgets = {
             "name": forms.TextInput(attrs={
-                "class": "w-full rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-ink placeholder-ink-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition",
-                "placeholder": "Votre nom",
-                "required": True,
+                "class": "field", "placeholder": "Votre nom", "autocomplete": "name",
             }),
             "email": forms.EmailInput(attrs={
-                "class": "w-full rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-ink placeholder-ink-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition",
-                "placeholder": "votre@email.com",
-                "required": True,
+                "class": "field", "placeholder": "votre@email.com", "autocomplete": "email",
             }),
             "message": forms.Textarea(attrs={
-                "class": "w-full rounded-xl border border-black/10 bg-white px-4 py-3 text-sm text-ink placeholder-ink-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20 transition",
-                "placeholder": "Votre message...",
-                "rows": 5,
-                "required": True,
+                "class": "field", "placeholder": "Votre message...", "rows": 5,
             }),
         }

@@ -9,41 +9,45 @@
 {% block twitter_card %}{% if project.cover_image %}summary_large_image{% else %}summary{% endif %}{% endblock %}
 
 {% block content %}
-<article class="max-w-3xl mx-auto px-6 pt-16 pb-16">
-  <a href="/#projets" class="text-sm text-ink-muted hover:text-accent transition">← Retour aux projets</a>
+<article class="mx-auto max-w-3xl px-6 pb-16 pt-14">
+  <nav aria-label="Fil d'Ariane" class="text-sm">
+    <a href="{% url 'core:home' %}#projets" class="text-ink-soft transition hover:text-accent">← Retour aux projets</a>
+  </nav>
 
   <header class="mt-8">
-    <p class="text-sm text-accent font-medium mb-3">Étude de cas</p>
-    <h1 class="font-display text-4xl md:text-5xl font-semibold leading-tight">{{ project.title }}</h1>
-    <p class="mt-5 text-lg text-black/70">{{ project.summary }}</p>
+    <p class="eyebrow">Étude de cas</p>
+    <h1 class="font-display text-4xl font-semibold leading-tight md:text-5xl">{{ project.title }}</h1>
+    <p class="lead mt-5">{{ project.summary }}</p>
   </header>
 
   {% if project.cover_image %}
-  <div class="mt-10 rounded-2xl overflow-hidden border border-black/5">
-    <img src="{{ project.cover_image.url }}" alt="{{ project.title }}" class="w-full h-auto">
+  <div class="card mt-10 overflow-hidden">
+    <img src="{{ project.cover_image.url }}" alt="Aperçu du projet {{ project.title }}" class="h-auto w-full">
   </div>
   {% endif %}
 
-  <dl class="mt-10 grid gap-4 sm:grid-cols-2 border-y border-black/5 py-6">
+  <dl class="mt-10 grid gap-6 border-y border-line py-6 sm:grid-cols-2">
     <div>
-      <dt class="text-xs uppercase tracking-wider text-ink-muted mb-1">Stack</dt>
-      <dd class="text-sm">{{ project.stack }}</dd>
+      <dt class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">Technologies</dt>
+      <dd><ul class="flex flex-wrap gap-2">{% for tech in project.stack_list %}<li class="badge">{{ tech }}</li>{% endfor %}</ul></dd>
     </div>
     <div>
-      <dt class="text-xs uppercase tracking-wider text-ink-muted mb-1">Rôle</dt>
-      <dd class="text-sm">{{ project.role }}</dd>
+      <dt class="mb-2 text-xs font-semibold uppercase tracking-wider text-ink-muted">Rôle</dt>
+      <dd class="text-sm leading-6 text-ink-soft">{{ project.role }}</dd>
     </div>
   </dl>
 
-  <div class="mt-8 text-base text-black/80 leading-relaxed whitespace-pre-line">{{ project.description }}</div>
+  <div class="mt-8 whitespace-pre-line text-base leading-8 text-ink-soft">{{ project.description }}</div>
 
   <div class="mt-10 flex flex-wrap gap-3">
-    {% if project.demo_url %}
-    <a href="{{ project.demo_url }}" target="_blank" rel="noopener" class="inline-flex items-center rounded-full bg-ink text-white px-5 py-2.5 text-sm hover:bg-accent transition">Voir la démo ↗</a>
-    {% endif %}
-    {% if project.github_url %}
-    <a href="{{ project.github_url }}" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border border-black/10 px-5 py-2.5 text-sm hover:border-accent hover:text-accent transition">Code source ↗</a>
-    {% endif %}
+    {% if project.demo_url %}<a href="{{ project.demo_url }}" target="_blank" rel="noopener" class="btn btn-primary">Voir la démo <span aria-hidden="true">↗</span></a>{% endif %}
+    {% if project.github_url %}<a href="{{ project.github_url }}" target="_blank" rel="noopener" class="btn btn-secondary">Code source <span aria-hidden="true">↗</span></a>{% endif %}
   </div>
+
+  <aside class="card mt-16 p-8 text-center">
+    <h2 class="font-display text-2xl font-semibold">Un projet similaire en tête ?</h2>
+    <p class="lead mx-auto mt-3 max-w-md">Décrivez-moi votre besoin et voyons comment avancer ensemble.</p>
+    <a href="{% url 'core:home' %}#contact" class="btn btn-primary mt-6">Me contacter <span aria-hidden="true">→</span></a>
+  </aside>
 </article>
 {% endblock %}

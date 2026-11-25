@@ -3,6 +3,7 @@ from django.contrib import messages
 from .models import Project, SiteContent, Skill, Service
 from .forms import ContactForm
 from .context_processors import get_site_content
+from .notifications import notify_new_message
 
 
 def home(request):
@@ -11,7 +12,8 @@ def home(request):
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
-            form.save()
+            if not form.cleaned_data.get("website"):
+                notify_new_message(form.save(), get_site_content(request).contact_email)
             messages.success(request, "Merci, votre message a bien ete envoye.")
             return redirect("/#contact")
     else:

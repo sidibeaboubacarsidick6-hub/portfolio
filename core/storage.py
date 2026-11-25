@@ -4,6 +4,7 @@ Remplace django-cloudinary-storage (incompatible : utilise STATICFILES_STORAGE s
 Utilise directement le SDK officiel `cloudinary`.
 """
 import os
+import uuid
 import cloudinary
 import cloudinary.uploader
 import cloudinary.utils
@@ -59,6 +60,11 @@ class MediaCloudinaryStorage(Storage):
                 secure=True,
             )
         return url
+
+    def get_available_name(self, name, max_length=None):
+        """Nom unique : evite que Cloudinary ignore un envoi (overwrite=False)."""
+        root, ext = os.path.splitext(name)
+        return f"{root}-{uuid.uuid4().hex[:8]}{ext}"
 
     def exists(self, name):
         return False

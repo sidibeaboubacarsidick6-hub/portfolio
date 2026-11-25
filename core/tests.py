@@ -62,3 +62,30 @@ class ContactTests(TestCase):
         r = self.envoyer(name="Awa\nBcc: x@example.com")
         self.assertEqual(r.status_code, 302)
         self.assertNotIn("\n", mail.outbox[0].subject)
+
+
+from .storage import MediaCloudinaryStorage
+
+
+class StorageTests(TestCase):
+    def test_noms_uniques_et_extension_conservee(self):
+        s = MediaCloudinaryStorage()
+        a = s.get_available_name("site/photo.jpg")
+        b = s.get_available_name("site/photo.jpg")
+        self.assertNotEqual(a, b)
+        self.assertTrue(a.startswith("site/photo-") and a.endswith(".jpg"))
+
+
+from django.contrib.auth import get_user_model
+
+
+@override_settings(STORAGES=TEST_STORAGES)
+class AdminDashboardTests(TestCase):
+    def test_tableau_de_bord(self):
+        admin_user = get_user_model().objects.create_superuser("admin", "a@example.com", "mdp-de-test-12345")
+        self.client.force_login(admin_user)
+        ContactMessage.objects.create(name="Awa", email="awa@example.com", message="Bonjour")
+        r = self.client.get(reverse("admin:index"))
+        self.assertEqual(r.status_code, 200)
+        self.assertContains(r, "Messages non lus")
+        self.assertEqual(r.context["dashboard"]["unread"], 1)

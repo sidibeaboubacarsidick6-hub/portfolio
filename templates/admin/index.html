@@ -1,0 +1,66 @@
+{% extends "admin/index.html" %}
+
+{% block content %}
+<style>
+  .dash { margin-bottom: 28px; }
+  .dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .dash-card { display: block; padding: 16px; border: 1px solid var(--border-color, #ddd); border-radius: 12px; background: var(--body-bg, #fff); color: var(--body-fg, #222); text-decoration: none; }
+  .dash-card:hover { border-color: #2563EB; }
+  .dash-card--alert { border-color: #2563EB; box-shadow: 0 0 0 1px #2563EB inset; }
+  .dash-label { font-size: 13px; color: var(--body-quiet-color, #666); }
+  .dash-card strong { display: block; margin-top: 4px; font-size: 28px; line-height: 1.1; }
+  .dash-card small { color: var(--body-quiet-color, #666); }
+  .dash-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+  .dash-actions a { padding: 9px 16px; border-radius: 999px; border: 1px solid var(--border-color, #ddd); text-decoration: none; font-weight: 600; }
+  .dash-actions a.primary { background: #2563EB; border-color: #2563EB; color: #fff; }
+  .dash table { width: 100%; }
+</style>
+
+<section class="dash" aria-label="Tableau de bord">
+  <div class="dash-grid">
+    <a class="dash-card{% if dashboard.unread %} dash-card--alert{% endif %}" href="{% url 'admin:core_contactmessage_changelist' %}?is_read__exact=0">
+      <span class="dash-label">Messages non lus</span>
+      <strong>{{ dashboard.unread }}</strong>
+      <small>sur {{ dashboard.messages }} au total</small>
+    </a>
+    <a class="dash-card" href="{% url 'admin:core_project_changelist' %}">
+      <span class="dash-label">Projets publiés</span>
+      <strong>{{ dashboard.projects_published }}</strong>
+      <small>sur {{ dashboard.projects }} au total</small>
+    </a>
+    <a class="dash-card" href="{% url 'admin:core_skill_changelist' %}">
+      <span class="dash-label">Compétences</span>
+      <strong>{{ dashboard.skills }}</strong>
+    </a>
+    <a class="dash-card" href="{% url 'admin:core_service_changelist' %}">
+      <span class="dash-label">Services</span>
+      <strong>{{ dashboard.services }}</strong>
+    </a>
+  </div>
+
+  <div class="dash-actions">
+    <a class="primary" href="{% url 'core:home' %}" target="_blank" rel="noopener">Voir le site ↗</a>
+    <a href="{% url 'admin:core_sitecontent_changelist' %}">Modifier le contenu du site</a>
+    <a href="{% url 'admin:core_project_add' %}">Ajouter un projet</a>
+  </div>
+
+  {% if dashboard.latest %}
+  <h2>Derniers messages</h2>
+  <table>
+    <thead><tr><th>Expéditeur</th><th>E-mail</th><th>Date</th><th>Statut</th></tr></thead>
+    <tbody>
+      {% for m in dashboard.latest %}
+      <tr>
+        <td><a href="{% url 'admin:core_contactmessage_change' m.pk %}">{{ m.name }}</a></td>
+        <td>{{ m.email }}</td>
+        <td>{{ m.created_at|date:"d/m/Y H:i" }}</td>
+        <td>{% if m.is_read %}Lu{% else %}<strong>Nouveau</strong>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+
+{{ block.super }}
+{% endblock %}

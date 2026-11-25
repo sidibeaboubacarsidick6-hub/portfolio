@@ -2,18 +2,19 @@
 
 Portfolio professionnel de développeur full-stack junior, conçu et développé de bout en bout avec Django.
 
-**En production :** [https://portfolio-sidick.onrender.com](https://portfolio-sidick.onrender.com)
+**En production :** https://portfolio-sidick.onrender.com
 
 ## Fonctionnalités
 
-- Design premium & responsive (Tailwind CSS, animations au scroll, header sticky)
-- Interface d'administration complète : tous les textes, projets, compétences et services sont modifiables depuis l'admin (aucun code à toucher)
-- Gestion des projets : cartes avec images, études de cas détaillées, liens démo/GitHub
-- Formulaire de contact fonctionnel avec stockage en base et notification dans l'admin
-- Optimisation des images via Cloudinary (CDN, conversion WebP/AVIF automatique)
+- Design responsive (Tailwind CSS) : système de composants, contrastes conformes AA, animations au scroll respectant `prefers-reduced-motion`
+- Administration complète : textes, photo du hero, projets, compétences et services modifiables sans toucher au code
+- Tableau de bord d'administration : messages non lus, projets publiés, raccourcis
+- Projets avec statut **Publié / brouillon** : un brouillon est invisible des visiteurs, visible pour le staff
+- Formulaire de contact avec protection anti-spam, stockage en base et alerte e-mail
+- Images optimisées via Cloudinary (CDN, formats modernes automatiques)
 - SEO : métadonnées Open Graph par page, JSON-LD, favicon
-- Pages d'erreur custom (404, 500)
-- Bilingue prêt (structure i18n en place, traduction FR/EN à activer)
+- Pages d'erreur personnalisées (404, 500)
+- Production durcie : cookies sécurisés, HSTS progressif, en-tête de proxy HTTPS
 
 ## Stack technique
 
@@ -22,7 +23,7 @@ Portfolio professionnel de développeur full-stack junior, conçu et développé
 | Backend | Python 3.12, Django 6.1 |
 | Base de données | PostgreSQL (production), SQLite (développement) |
 | Frontend | Tailwind CSS 3.4, JavaScript vanilla |
-| Images | Cloudinary (CDN + optimisation) |
+| Images | Cloudinary |
 | Déploiement | Render (Gunicorn, Whitenoise) |
 
 ## Lancer le projet en local
@@ -30,53 +31,58 @@ Portfolio professionnel de développeur full-stack junior, conçu et développé
 Prérequis : Python 3.12+, Node.js 20+, Git.
 
 ```bash
-# 1. Cloner le dépôt
 git clone https://github.com/sidibeaboubacarsidick6-hub/portfolio.git
 cd portfolio
 
-# 2. Créer et activer l'environnement virtuel
 python -m venv .venv
-source .venv/bin/activate  # Windows : .venv\Scripts\activate
+source .venv/bin/activate        # Windows : .venv\Scripts\activate
 
-# 3. Installer les dépendances
 pip install -r requirements.txt
 npm install
 
-# 4. Configurer les variables d'environnement
-# Créer un fichier .env avec les valeurs décrites ci-dessous
+# Créer le fichier .env (voir ci-dessous)
 
-# 5. Appliquer les migrations et charger les données de démo
 python manage.py migrate
 python manage.py loaddata fixtures/core_data.json
-
-# 6. Créer un superutilisateur
 python manage.py createsuperuser
 
-# 7. Builder le CSS
-npm run build
+./dev.sh                         # Tailwind (watch) + serveur sur http://localhost:8000
+```
 
-# 8. Lancer le serveur
-python manage.py runserver
-Site sur http://localhost:8000 — Admin sur http://localhost:8000/admin/.
+Admin : http://localhost:8000/admin/
 
-Variables d'environnement (.env)
-env
+## Tests
+
+```bash
+python manage.py test
+```
+
+## Variables d'environnement (`.env`)
+
+```env
 DEBUG=True
 SECRET_KEY=une-cle-secrete-unique
 ALLOWED_HOSTS=localhost,127.0.0.1
 
-# Cloudinary (obligatoire pour les images)
+# Cloudinary (obligatoire pour envoyer des images)
 CLOUDINARY_CLOUD_NAME=votre-cloud-name
 CLOUDINARY_API_KEY=votre-api-key
 CLOUDINARY_API_SECRET=votre-api-secret
-Déploiement
-Déploiement automatisé via Render :
 
-Push sur la branche main
+# E-mail (facultatif en local : sans EMAIL_BACKEND, les e-mails s'affichent dans le terminal)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_HOST_USER=votre-adresse
+EMAIL_HOST_PASSWORD=mot-de-passe-d-application
+DEFAULT_FROM_EMAIL=Portfolio <votre-adresse>
+```
 
-Render détecte le changement et lance build.sh
+La liste complète des variables, y compris celles de production, est dans `MAINTENANCE.md`.
 
-Le script installe les dépendances, build Tailwind, collecte les statiques, migre la base et redémarre Gunicorn
+## Déploiement
 
-Licence
+Déploiement automatique via Render à chaque push sur `main` : `build.sh` installe les dépendances, compile Tailwind, collecte les statiques, applique les migrations et charge les données initiales si la base est vide. La procédure de publication, de sauvegarde et de retour arrière est décrite dans `MAINTENANCE.md`.
+
+## Licence
+
 © Sidibe Aboubacar Sidick — Tous droits réservés.

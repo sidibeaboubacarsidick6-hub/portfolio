@@ -20,3 +20,4 @@ db.sqlite3
 # Node
 node_modules/
 static/css/output.css
+backup_*.json

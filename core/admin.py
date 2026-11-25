@@ -28,7 +28,7 @@ from .models import SiteContent, Skill, Service
 class SiteContentAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Hero", {
-            "fields": ("hero_badge", "hero_title", "hero_highlight", "hero_subtitle", "hero_tech_tags"),
+            "fields": ("hero_badge", "hero_title", "hero_highlight", "hero_subtitle", "hero_tech_tags", "hero_photo"),
         }),
         ("À propos", {
             "fields": ("about_p1", "about_p2", "about_p3"),

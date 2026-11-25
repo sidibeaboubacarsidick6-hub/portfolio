@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Project, SiteContent, Skill, Service
 from .forms import ContactForm
+from .context_processors import get_site_content
 
 
 def home(request):
@@ -16,7 +17,7 @@ def home(request):
     else:
         form = ContactForm()
 
-    content = SiteContent.load()
+    content = get_site_content(request)
 
     # Decoupe du hero pour colorer le mot-cle
     title = content.hero_title
@@ -38,6 +39,12 @@ def home(request):
     skills_frontend = [s for s in skills if s.category == "frontend"]
     skills_deploy = [s for s in skills if s.category == "deploy"]
 
+    skill_groups = [
+        ("Backend", "Logique métier, traitement des données et services applicatifs.", "</>", skills_backend),
+        ("Frontend", "Interfaces web accessibles, structurées et adaptées aux écrans.", "◫", skills_frontend),
+        ("Déploiement & outils", "Gestion du code, environnements de travail et mise en ligne.", "↗", skills_deploy),
+    ]
+
     services = list(Service.objects.all())
 
     return render(request, "core/home.html", {
@@ -47,6 +54,7 @@ def home(request):
         "hero_before": hero_before,
         "hero_after": hero_after,
         "tech_tags": tech_tags,
+        "skill_groups": skill_groups,
         "skills_backend": skills_backend,
         "skills_frontend": skills_frontend,
         "skills_deploy": skills_deploy,

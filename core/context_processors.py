@@ -15,5 +15,12 @@ def static_version(request):
 
 from .models import SiteContent
 
+def get_site_content(request):
+    """Charge SiteContent une seule fois par requete."""
+    if not hasattr(request, "_site_content"):
+        request._site_content = SiteContent.load()
+    return request._site_content
+
+
 def site_content(request):
-    return {'content': SiteContent.load()}
+    return {'content': get_site_content(request)}

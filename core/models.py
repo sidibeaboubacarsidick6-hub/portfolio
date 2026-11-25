@@ -25,6 +25,10 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def stack_list(self):
+        return [s.strip() for s in self.stack.split(",") if s.strip()]
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -68,6 +72,11 @@ class SiteContent(models.Model):
         max_length=255,
         default="Python & Django,API REST,Bases de données,Déploiement web",
         help_text="Tags séparés par des virgules",
+    )
+
+    hero_photo = models.ImageField(
+        upload_to="site/", blank=True, null=True,
+        help_text="Photo affichée dans le hero (carrée, 1000x1000 px conseillé).",
     )
 
     # À propos
